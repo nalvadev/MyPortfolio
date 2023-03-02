@@ -14,11 +14,7 @@ const Contact = () => {
 
 /*creando mensaje de exito*/
 
-const [Message, setMessage] = useState("");
-
-const handleMessage = () => {
-  swal("Mensaje Enviado!", "En breve nos pondremos en contacto");
-}
+/*swal("Mensaje Enviado!", "En breve nos pondremos en contacto");*/
 
 /*================================ */
 
@@ -35,7 +31,10 @@ const handleMessage = () => {
     );
     e.target.reset().then(
       (result) => {
-        alert("mensaje enviado");
+        if(result){
+          swal("Mensaje Enviado!", "En breve nos pondremos en contacto");
+        }
+        
         console.log(result.text);
       },
       (error) => {
@@ -102,15 +101,13 @@ const handleMessage = () => {
             rows="9"
             placeholder="Your Message"
             required
-            {...Message}
+            
           ></textarea>
           <button
             type="submit"
             id="send"
             className="btn btn-primary"
             href="#about"
-
-            onClick={handleMessage}
           >
             Send Message
           </button>
